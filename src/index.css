@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Bellefair&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@200;300;400&family=Barlow:wght@100;200&family=Bellefair&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1 {
+  font-family: "Bellefair ";
+  font-style: normal;
+  font-weight: 0;
+  color: #ffffff;
+  @apply md:text-[9.375rem] text-[6.375rem]
+}
+h2 {
+  font-family: "Bellefair";
+  font-style: normal;
+  font-weight: 400;
+  color: #ffffff;
+  
+  @apply md:text-[5.25rem] text-[4.375rem]
+}
+h3 {
+  font-family: "Bellefair";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+h4 {
+  font-family: "Bellefair";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+
+  color: #ffffff;
+}
+h5 {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.2953rem;
+  
+  @apply md:text-[1.75rem] text-[1.20rem]
+}
+body {
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 400;
+  color: #ffffff;
+
+  
+  @apply bg-default md:text-[1.125rem] text-[1.130rem]
+}
+.sub-heading {
+  font-family: "Bellefair";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.75rem; 
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.sub-heading-sec {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.0625rem;
+  letter-spacing: 0.1477rem;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.nav-text {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem; 
+  letter-spacing: 0.1688rem;
+  color: #ffffff;
+  @apply transition-colors duration-500 uppercase  whitespace-nowrap mx-5   hover:border-[#ffffff50]  border-transparent border-b-[0.1875rem]
+}
+.nav-active {
+    font-family: "Barlow Condensed";
+    font-style: normal; 
+    font-size: 1rem; 
+    letter-spacing: 0.1688rem;
+    color: #ffffff;
+    @apply  uppercase  whitespace-nowrap mx-5  border-[#ffffff]   border-b-[0.1875rem]
+  }
+
+  .numberic{
+    font-family: 'Barlow Condensed';
+font-style: normal;
+font-weight: 700;
+font-size: 1rem; 
+letter-spacing: 0.1688rem;
+
+color: #FFFFFF;
+}.numberic-info{
+  font-family: 'Barlow Condensed';
+font-style: normal;
+font-weight: 700;
+font-size: 1.2rem; 
+letter-spacing: 0.1688rem;
+
+color: #FFFFFF54;
+
+@apply px-1
+}
+
+@keyframes animatedBackground {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 0;
+  }
+}
+.animate-area {
+  background-position: 0rem 0rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: animatedBackground 10s linear infinite alternate;
+  
+}
+
+.reverse {
+  -ms-transform: scaleX(-1);
+  -moz-transform: scaleX(-1); /* Gecko */
+  -o-transform: scaleX(-1); /* Operah */
+  -webkit-transform: scaleX(-1); /* webkit */
+  transform: scaleX(-1); /* standard */
+  filter: FlipH; /* IE 6/7/8 */
+}
