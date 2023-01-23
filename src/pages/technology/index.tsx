@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import Transitions from "../../components/transitions";
 import App from "../../App";
 import { Technology as TechnologyType } from "../../types/somthing";
-import { NavLink, Route, Router, Routes } from "react-router-dom";
+import { Navigate, NavLink, Route, Router, Routes, useLocation } from "react-router-dom";
 const DesktopMode = (props: { technologys: TechnologyType[] | undefined }) => {
   const technologys = props.technologys;
   return (
@@ -126,15 +126,17 @@ const SelectionList = (props: {
 
 const Technology = () => {
   const technologys = useContext(App.appDataContext)?.technology;
+  
+  const location = useLocation();
   return (
-    <Transitions>
       <section
         key={"transitions"}
         className="animate-area pt-44 
         md:bg-[url('/assets/technology/background-technology-tablet.jpg')] 
         lg:bg-[url('/assets/technology/background-technology-desktop.jpg')] 
-        bg-[url('/assets/technology/background-technology-mobile.jpg')]   h-[100vh] bg-center  "
+        bg-[url('/assets/technology/background-technology-tablet.jpg')]   h-[100vh] bg-center  "
       >
+      {!location.pathname.endsWith("technology")?<></>:<Navigate   to="./" />}
         <VerticalMode technologys={technologys} />
         <DesktopMode technologys={technologys} />
         {/* <div className="lg:grid lg:grid-cols-2 flex flex-col  h-full justify-items-center items-center">
@@ -142,7 +144,6 @@ const Technology = () => {
           <ImagesRender desktop={false} technologys={technologys} />
         </div> */}
       </section>
-    </Transitions>
   );
 };
 

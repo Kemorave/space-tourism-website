@@ -7,7 +7,7 @@ export const someApi = createApi({
   reducerPath: 'someApi',
   // global configuration for the api
   keepUnusedDataFor: 60*60,
-  baseQuery: fetchBaseQuery({ baseUrl: '/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: '/space-tourism-website/' }),
   endpoints: (builder) => ({
     getAllData: builder.query<FullData|undefined|null, null>({
       query: () => `/assets/data.json`,

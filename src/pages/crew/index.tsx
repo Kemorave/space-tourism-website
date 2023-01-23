@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import Transitions from "../../components/transitions";
 import App from "../../App";
 import { Crew as CrewType } from "../../types/somthing";
-import { NavLink, Route, Router, Routes } from "react-router-dom";
+import { Navigate, NavigateFunction, NavLink, Route, Router, Routes, useLocation, useNavigate, useNavigation } from "react-router-dom";
 import { useSwipeable } from "react-swipeable";
 const Preveiw = (props: { crew: CrewType | null | undefined }) => {
   let crew = props.crew;
@@ -62,20 +62,47 @@ const SelectionList = (props: { crews: CrewType[] | undefined }) => {
     </div>
   );
 };
+
+const next=(current:number,nav:NavigateFunction,crews:CrewType[]|undefined)=>{
+     
+  if(current+1>=(crews?.length??0))
+  return;
+  nav(`./${++current}`)
+  }
+  const prev=(current:number,nav:NavigateFunction,crews:CrewType[]|undefined)=>{
+     
+    if(current-1<0)
+    return;
+    nav(`./${(--current)==0?'/':current}`)
+    }
 const Crew = () => {
-  const handlers = useSwipeable({
-    onSwipedLeft: (eventData) => console.log("User Swiped!", eventData),
-  });
+  
+  const navigation=useNavigate();
   const crews = useContext(App.appDataContext)?.crew;
+  const location = useLocation();
+  let locs = location.pathname.split('/');
+  let key:number= Number.parseInt(locs.at(locs.length-1)??'');
+  
+   if(Number.isNaN(key)||key.toString()==='NaN')
+  {key=0;}
+  console.log(key);
+ 
+  const handlers = useSwipeable({
+   onSwipedRight : (eventData) => {
+      prev(key,navigation,crews);
+    }, onSwipedLeft : (eventData) => {
+      next(key,navigation,crews);
+    },
+  }); 
   return (
-    <Transitions>
       <section
         key={"transitions"}
         className="pt-44 animate-area
         md:bg-[url('/assets/crew/background-crew-tablet.jpg')] 
         lg:bg-[url('/assets/crew/background-crew-desktop.jpg')] 
-        bg-[url('/assets/crew/background-crew-mobile.jpg')]  h-[100vh] bg-center  "
+        bg-[url('/assets/crew/background-crew-tablet.jpg')]  h-[100vh] bg-center  "
       >
+      {!location.pathname.endsWith("crew")?<></>:<Navigate   to="./" />}
         <div  {...handlers} className="lg:grid  lg:grid-cols-2 flex flex-col lg:text-start text-center h-full justify-items-center items-center">
           <div className="flex flex-col md:hidden ">
             <h5 className="uppercase mb-10 -mt-10 self-center md:self-start  text-xl">
@@ -106,7 +133,6 @@ const Crew = () => {
           </div>
         </div>
       </section>
-    </Transitions>
   );
 };
 

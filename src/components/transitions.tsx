@@ -1,22 +1,20 @@
 import { motion } from "framer-motion";
 import { ReactElement } from "react";
-const animationConfiguration = {initial: {
-    height: "100vh",
-    bottom: 0,
-  },
-  animate: {
-    height: 0,    
-  },
-};
-const Transitions = (props:{ children?:JSX.Element | JSX.Element[] }) => (
+import { useLocation } from "react-router-dom";
+ 
+const Transitions = (props:{ key?:string,children?:JSX.Element | JSX.Element[] }) => {
+  const location = useLocation()
+console.log(location.pathname);
+  return (
     <motion.div
-        variants={(animationConfiguration as any)}
-        initial="initial"
-        animate="animate"
-         exit={{ opacity: 0 }}
-        transition={{ duration: 3 }}
+    exit={{ opacity: 0 }}
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    key={props.key??location.pathname} 
+      
+    transition={{ duration: 1 }} className="overflow-clip z-10"
     >
         {props.children}
     </motion.div>
-);
+)};
 export default Transitions;

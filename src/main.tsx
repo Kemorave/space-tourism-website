@@ -39,7 +39,8 @@ const router = createBrowserRouter(
   { basename: "/space-tourism-website" }
 );
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <Provider store={store}>
+  <React.Fragment>
+    <Provider store={store}>
     <RouterProvider
       router={router}
       fallbackElement={
@@ -49,4 +50,5 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       }
     />
   </Provider>
+  </React.Fragment>
 );

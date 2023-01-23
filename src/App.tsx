@@ -7,10 +7,11 @@ import Home from "./pages/home";
 import { useGetAllDataQuery } from "./services/some_api";
 import { AnimatePresence } from "framer-motion";
 
-import { useLocation } from "react-router-dom";
 import { FullData } from "./types/somthing";
 import { NavItem } from "./components/NavItem";
 
+import { useLocation } from "react-router-dom";
+import Transitions from "./components/transitions";
 const appDataContext = createContext<FullData | undefined | null>(null);
 function App() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -47,7 +48,7 @@ const onNavClic=()=>{
               }}
               className="my-8 self-end"
             >
-              <img alt="close" src="/assets/shared/icon-close.svg" />
+              <img alt="close" src="/space-tourism-website/assets/shared/icon-close.svg" />
             </button>
             <ul className="flex flex-col">
               <NavItem onClick={onNavClic} keepInline to="/" lable="Home" index="00" />
@@ -70,8 +71,8 @@ const onNavClic=()=>{
         </div>
         <Nav isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
         <main className="transition-all  h-full">
-          <AnimatePresence mode="wait">
-            <Outlet />
+          <AnimatePresence mode="wait" >
+           <Outlet />
           </AnimatePresence>
         </main>
       </div>
