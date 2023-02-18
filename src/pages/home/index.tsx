@@ -29,7 +29,7 @@ const Home = () => {
               onClick={() => navigation("destination/")}
               className="bg-white m-auto  text-center w-[10rem] h-[10rem] md:w-[15rem] md:h-[15rem] rounded-full"
             >
-              <h4 className="text-black ">Explore</h4>
+              <h3 className="text-black ">Explore</h3>
             </button>
           </div>
         </div>
