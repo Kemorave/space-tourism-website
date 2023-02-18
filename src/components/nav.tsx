@@ -4,7 +4,7 @@ import { NavItem } from "./NavItem";
 const Nav = (props:{isDrawerOpen:boolean,setIsDrawerOpen:React.Dispatch<React.SetStateAction<boolean>>}) => { 
   return (
     <nav className="flex  absolute z-10  opacity-100 top-0 w-full lg:px-10 lg:mt-10 justify-between items-center">
-      <img
+      <img alt="st"
         className="m-10  md:mx-10 md:my-0 w-12 md:w-14 lg:w-10 animate-spin-show  hover:animate-pulse active:animate-ping"
         src="/space-tourism-website/assets/home/star.svg"
       /> 
